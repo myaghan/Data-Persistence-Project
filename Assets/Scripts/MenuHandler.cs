@@ -18,18 +18,18 @@ public class MenuHandler : MonoBehaviour
     }
     public void StartGeme()
     {
-        Debug.Log("the player name is:" + playerName);
-        string testing = "pp";
-        Debug.Log("pp lenght :" + testing.Length);
-        Debug.Log("the field name is" + fieldName.text +"checked");
-        Debug.Log("the length is:" + fieldName.text.ToString().Length) ;
-        Debug.Log(string.IsNullOrEmpty(fieldName.text.ToString())); ;
+     
         //if (string.IsNullOrEmpty(fieldName.text));
         if (fieldName.text.Length > 1) 
         {
             playerName = fieldName.text;
         }
         Persistancy.Instance.playerNameF = playerName;
+        Persistancy.Instance.LoadScore();
+        if (Persistancy.Instance.heighScoreNameStored == null)//no file stored
+        {
+            Persistancy.Instance.heighScoreNameStored = playerName;//and the heighst score is 0
+        }
         //Debug.Log(playerName);
         SceneManager.LoadScene(1);
     }
